@@ -7,10 +7,10 @@ song_list = os.listdir('./audio_samples')  # ['bass.mp3', 'hihat.mps3', 'kick.mp
 
 song_list_no_ext = []
 for song in song_list:
-    name, ext = os.path.splitext(song)
+    name, _ = os.path.splitext(song)
     song_list_no_ext.append(name.upper())
 
-# print(song_list_no_ext)
+print(song_list_no_ext)
 # exit()
 
 def play_sound(channel:int, sound:int):
@@ -70,9 +70,9 @@ while True:
         play_sound(7, 7)
     elif event == 'SOUND0':
         stop_sound(0)
-    elif event == 'SOUND2':
+    elif event == 'SOUND1':
         stop_sound(1)
-    elif event == 'SOUND1':    
+    elif event == 'SOUND2':    
         stop_sound(2)
     elif event == 'SOUND3':    
         stop_sound(3)
