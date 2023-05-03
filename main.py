@@ -18,8 +18,6 @@ def stop_sound(channel:int):
     channel_n.stop()
 
 mixer.init()
-shaker = mixer.Sound('shaker.mp3')
-kick = mixer.Sound('kick.mp3')
 
 layout = [
     [sg.Text('Audio Mixer', font=('Helvetica', 20))],
