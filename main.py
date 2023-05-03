@@ -4,7 +4,7 @@ import PySimpleGUI as sg
 import os
 
 song_list = os.listdir('./audio_samples')  # ['bass.mp3', 'hihat.mps3', 'kick.mp3', 'mr_world.mp3', 'shaker.mp3', 'snap.mp3', 'snare.mp3', 'sound.mp3']
-# print(song_list)
+print(song_list)
 # exit()
 
 def play_sound(channel:int, sound:int):
@@ -48,21 +48,21 @@ while True:
     if event == sg.WIN_CLOSED:
         break
     elif event == 'kick':
-        play_sound(0, 2)
+        play_sound(0, 0)
     elif event == 'mr_world':
-        play_sound(1, 3)
+        play_sound(1, 1)
     elif event == 'shaker':
-        play_sound(2, 4)
+        play_sound(2, 7)
     elif event == 'bass':
-        play_sound(3, 0)
+        play_sound(3, 4)
     elif event == 'hihat':
-        play_sound(4, 1)
+        play_sound(4, 5)
     elif event == 'snap':
-        play_sound(5, 5)
+        play_sound(5, 3)
     elif event == 'snare':
-        play_sound(6, 6)
+        play_sound(6, 2)
     elif event == 'sound':
-        play_sound(7, 7)
+        play_sound(7, 6)
     elif event == 'stop_kick':
         stop_sound(0)
     elif event == 'stop_mr_world':
