@@ -48,36 +48,36 @@ while True:
     if event == sg.WIN_CLOSED:
         break
     elif event == 'kick':
-        play_sound(1, 2)
+        play_sound(0, 2)
     elif event == 'mr_world':
-        play_sound(2, 3)
+        play_sound(1, 3)
     elif event == 'shaker':
-        play_sound(3, 4)
+        play_sound(2, 4)
     elif event == 'bass':
-        play_sound(4, 0)
+        play_sound(3, 0)
     elif event == 'hihat':
-        play_sound(5, 1)
+        play_sound(4, 1)
     elif event == 'snap':
-        play_sound(6, 5)
+        play_sound(5, 5)
     elif event == 'snare':
-        play_sound(7, 6)
+        play_sound(6, 6)
     elif event == 'sound':
-        play_sound(8, 7)
+        play_sound(7, 7)
     elif event == 'stop_kick':
-        stop_sound(1)
+        stop_sound(0)
     elif event == 'stop_mr_world':
-        stop_sound(2)
+        stop_sound(1)
     elif event == 'stop_shaker':    
-        stop_sound(3)
+        stop_sound(2)
     elif event == 'stop_bass':    
-        stop_sound(4)
+        stop_sound(3)
     elif event == 'stop_hihat':    
-        stop_sound(5)
+        stop_sound(4)
     elif event == 'stop_snap':    
-        stop_sound(6)
+        stop_sound(5)
     elif event == 'stop_snare':    
-        stop_sound(7)
+        stop_sound(6)
     elif event == 'stop_sound':    
-        stop_sound(8)
+        stop_sound(7)
 
 window.close()
