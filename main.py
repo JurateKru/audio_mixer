@@ -4,6 +4,7 @@ import PySimpleGUI as sg
 import os
 
 song_list = os.listdir('./audio_samples')  # ['bass.mp3', 'hihat.mps3', 'kick.mp3', 'mr_world.mp3', 'shaker.mp3', 'snap.mp3', 'snare.mp3', 'sound.mp3']
+active_songs = []
 # print(song_list)
 
 song_list_no_ext = []
@@ -27,12 +28,20 @@ def button(channel, index, event, playing):
     if not playing:
         play_sound(channel, index)
         window[event].Update(event, button_color=('white', 'green')) 
-        playing = True
+        active_songs.append(event)
     else:
         stop_sound(channel)
         window[event].Update(event, button_color=('white', 'black')) 
+        active_songs.remove(event)
+
+def song_status(sound):
+    if sound in active_songs:
+        playing = True
+    else: 
         playing = False
     return playing
+    
+
 
 mixer.init()
 
@@ -47,15 +56,6 @@ layout = [
      sg.Button(song_list_no_ext[5], key=song_list_no_ext[5], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[6], key=song_list_no_ext[6], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[7], key=song_list_no_ext[7], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14))],
-    # [sg.Text('Stop playing:', font=('Helvetica', 12))],
-    # [sg.Button(song_list_no_ext[0], key='SOUND0', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[1], key='SOUND1', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[2], key='SOUND2', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[3], key='SOUND3', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[4], key='SOUND4', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[5], key='SOUND5', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[6], key='SOUND6', size=(10, 3), font=('Helvetica', 14)),
-    #  sg.Button(song_list_no_ext[7], key='SOUND7', size=(10, 3), font=('Helvetica', 14))]
 ]
 
 window = sg.Window("Audio mixer", layout)
@@ -67,20 +67,28 @@ while True:
     if event == sg.WIN_CLOSED:
         break
     elif event == song_list_no_ext[0]:
-        playing = button(0, 0, event, playing)
+        playing = song_status(event)
+        button(0, 0, event, playing)
     elif event == song_list_no_ext[1]:
-        playing = button(1, 1, event, playing)
+        playing = song_status(event)
+        button(1, 1, event, playing)
     elif event == song_list_no_ext[2]:
-        playing = button(2, 2, event, playing)
+        playing = song_status(event)
+        button(2, 2, event, playing)
     elif event == song_list_no_ext[3]:
-        playing = button(3, 3, event, playing)
+        playing = song_status(event)
+        button(3, 3, event, playing)
     elif event == song_list_no_ext[4]:
-        playing = button(4, 4, event, playing)
+        playing = song_status(event)
+        button(4, 4, event, playing)
     elif event == song_list_no_ext[5]:
-        playing = button(5, 5, event, playing)
+        playing = song_status(event)
+        button(5, 5, event, playing)
     elif event == song_list_no_ext[6]:
-        playing = button(6, 6, event, playing)
+        playing = song_status(event)
+        button(6, 6, event, playing)
     elif event == song_list_no_ext[7]:
-        playing = button(7, 7, event, playing)
+        playing = song_status(event)
+        button(7, 7, event, playing)
 
 window.close()
