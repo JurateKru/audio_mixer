@@ -26,7 +26,7 @@ def stop_sound(channel:int):
 def button(channel, index, event, playing):
     if not playing:
         play_sound(channel, index)
-        window[event].Update(event, button_color=('white', 'red')) 
+        window[event].Update(event, button_color=('white', 'green')) 
         playing = True
     else:
         stop_sound(channel)
@@ -42,8 +42,8 @@ layout = [
     [sg.Button(song_list_no_ext[0], key=song_list_no_ext[0], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[1], key=song_list_no_ext[1], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[2], key=song_list_no_ext[2], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_list_no_ext[3], key=song_list_no_ext[3], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_list_no_ext[4], key=song_list_no_ext[4], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
+     sg.Button(song_list_no_ext[3], key=song_list_no_ext[3], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14))],
+     [sg.Button(song_list_no_ext[4], key=song_list_no_ext[4], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[5], key=song_list_no_ext[5], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[6], key=song_list_no_ext[6], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
      sg.Button(song_list_no_ext[7], key=song_list_no_ext[7], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14))],
