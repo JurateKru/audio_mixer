@@ -15,10 +15,10 @@ def configure(sound_list):
         if event in (sg.WIN_CLOSED, 'exit'):
             break
         elif event == 'buttons':
-            choosen_sound = values['buttons']
+            choosen_button = values['buttons']
         elif event == 'button_name':
             choosen_name = values['button_name']
-    
+
     window.close()
-    return choosen_sound, choosen_name
+    return choosen_button, choosen_name
         
