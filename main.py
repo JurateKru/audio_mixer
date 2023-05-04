@@ -1,36 +1,14 @@
 from pygame import mixer
 import PySimpleGUI as sg
-import os
 import json
-
-song_list = os.listdir('./audio_samples')  # ['bass.mp3', 'hihat.mps3', 'kick.mp3', 'mr_world.mp3', 'shaker.mp3', 'snap.mp3', 'snare.mp3', 'sound.mp3']
-song_keys = []
-for song in song_list:
-    name, _ = os.path.splitext(song)
-    song_keys.append(name.upper())
-
-audio_info = {}
-
-for i, song in enumerate(song_list):
-    name, ext = os.path.splitext(song)
-    audio_info[song_keys[i]] = {
-        'filename': song,
-        'directory': 'audio_samples',
-        'button_name': song_keys[i],
-        'button_location': (i % 4, i // 4) # Assumes a 4x2 layout
-    }
-
-with open('audio_info.json', 'w', encoding="utf-8") as f:
-    json.dump(audio_info, f, indent=4)
+from window2 import configure
 
 with open('audio_info.json', 'r') as f:
-    data = json.load(f)
-
-song_keys = list(data.keys())
+    song_list, song_keys = json.load(f)
 
 def play_sound(channel:int, sound:int):
     channel_n = mixer.Channel(channel)
-    sound = mixer.Sound(f'audio_samples/{song_list[sound]}')
+    sound = mixer.Sound(f'audio_samples/{song_keys[sound]}.mp3')
     channel_n.play(sound, loops=-1)
 
 def stop_sound(channel:int):
@@ -67,28 +45,22 @@ layout = [
      sg.Button(song_keys[5], key=song_keys[5], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
      sg.Button(song_keys[6], key=song_keys[6], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
      sg.Button(song_keys[7], key=song_keys[7], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2)],
-     [sg.Button("Go to configurator window", key='configure',button_color=('black', 'grey'), size=(55, 1), font=('Helvetica', 12), border_width=3)]
+     [sg.Button("Go to configurator window", key='configure', button_color=('black', 'grey'), size=(55, 1), font=('Helvetica', 12), border_width=3)]
 ]
 
-# TESTAVIMAS NAUJO LANGO
-layout2 = [
-    [sg.Button("BELEKAS", key='testavimas', button_color=('white', 'grey'), size=(26, 1), font=('Helvetica', 12), border_width=3),
-     sg.Button("Edit Me", button_color=('white', 'grey'), size=(26, 1), font=('Helvetica', 12), border_width=3)]
-     ]
-
 window = sg.Window("Audio mixer", layout)
-window2 = sg.Window("Audio mixer", layout2)  # TESTAVIMAS NAUJO LANGO
 
 playing = False
 
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
+        with open('audio_info.json', 'w') as f:
+            json.dump([song_list, song_keys], f)
         break
-    elif event == "testavimas":  # TESTAVIMAS NAUJO LANGO
-        while True:
-            event, values = window2.read()
-            pass
+    elif event == "configure":  # TESTAVIMAS NAUJO LANGO
+        choosen_button, choosen_name = configure(song_keys)
+        song_keys[choosen_button] = choosen_name
     elif event == song_keys[0]:
         playing = song_status(event)
         button(0, 0, event, playing)

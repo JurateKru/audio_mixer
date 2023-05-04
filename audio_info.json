@@ -1,74 +1,22 @@
-{
-    "BASS": {
-        "filename": "bass.mp3",
-        "directory": "audio_samples",
-        "button_name": "BASS",
-        "button_location": [
-            0,
-            0
-        ]
-    },
-    "HIHAT": {
-        "filename": "hihat.mp3",
-        "directory": "audio_samples",
-        "button_name": "HIHAT",
-        "button_location": [
-            1,
-            0
-        ]
-    },
-    "KICK": {
-        "filename": "kick.mp3",
-        "directory": "audio_samples",
-        "button_name": "KICK",
-        "button_location": [
-            2,
-            0
-        ]
-    },
-    "MR_WORLD": {
-        "filename": "mr_world.mp3",
-        "directory": "audio_samples",
-        "button_name": "MR_WORLD",
-        "button_location": [
-            3,
-            0
-        ]
-    },
-    "SHAKER": {
-        "filename": "shaker.mp3",
-        "directory": "audio_samples",
-        "button_name": "SHAKER",
-        "button_location": [
-            0,
-            1
-        ]
-    },
-    "SNAP": {
-        "filename": "snap.mp3",
-        "directory": "audio_samples",
-        "button_name": "SNAP",
-        "button_location": [
-            1,
-            1
-        ]
-    },
-    "SNARE": {
-        "filename": "snare.mp3",
-        "directory": "audio_samples",
-        "button_name": "SNARE",
-        "button_location": [
-            2,
-            1
-        ]
-    },
-    "SOUND": {
-        "filename": "sound.mp3",
-        "directory": "audio_samples",
-        "button_name": "SOUND",
-        "button_location": [
-            3,
-            1
-        ]
-    }
-}
+[
+    [
+        "bass.mp3",
+        "hihat.mp3",
+        "kick.mp3",
+        "mr_world.mp3",
+        "shaker.mp3",
+        "snap.mp3",
+        "snare.mp3",
+        "sound.mp3"
+    ],
+    [
+        "BASS",
+        "HIHAT",
+        "KICK",
+        "MR_WORLD",
+        "SHAKER",
+        "SNAP",
+        "SNARE",
+        "SOUND"
+    ]
+]
