@@ -18,13 +18,14 @@ def stop_sound(channel:int):
 
 active_songs = []
 def button(channel, index, event, playing):
+    channel_name = song_keys[event]
     if not playing:
         play_sound(channel, index)
-        window[event].Update(event, button_color=('white', 'green')) 
+        window[event].Update(channel_name, button_color=('white', 'green')) 
         active_songs.append(event)
     else:
         stop_sound(channel)
-        window[event].Update(event, button_color=('white', 'black')) 
+        window[event].Update(channel_name, button_color=('white', 'black')) 
         active_songs.remove(event)
 
 def song_status(sound):
