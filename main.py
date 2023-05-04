@@ -58,18 +58,16 @@ def song_status(sound):
 mixer.init()
 
 layout = [
-    [sg.Text('Audio Mixer', font=('Helvetica', 20))],
-    [sg.Text('Select an audio to play:', font=('Helvetica', 12))],
-    [sg.Button(song_keys[0], key=song_keys[0], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_keys[1], key=song_keys[1], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_keys[2], key=song_keys[2], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_keys[3], key=song_keys[3], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14))],
-     [sg.Button(song_keys[4], key=song_keys[4], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_keys[5], key=song_keys[5], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_keys[6], key=song_keys[6], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14)),
-     sg.Button(song_keys[7], key=song_keys[7], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14))],
-     [sg.Button("Configure", key='testavimas', button_color=('white', 'grey'), size=(26, 1), font=('Helvetica', 12), border_width=3),
-     sg.Button("Edit Me", button_color=('white', 'grey'), size=(26, 1), font=('Helvetica', 12), border_width=3)]
+[sg.Text('Select an audio to play:', font=('Helvetica', 12))],
+    [sg.Button(song_keys[0], key=song_keys[0], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
+     sg.Button(song_keys[1], key=song_keys[1], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
+     sg.Button(song_keys[2], key=song_keys[2], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
+     sg.Button(song_keys[3], key=song_keys[3], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2)],
+     [sg.Button(song_keys[4], key=song_keys[4], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
+     sg.Button(song_keys[5], key=song_keys[5], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
+     sg.Button(song_keys[6], key=song_keys[6], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
+     sg.Button(song_keys[7], key=song_keys[7], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2)],
+     [sg.Button("Go to configurator window", key='configure',button_color=('black', 'grey'), size=(55, 1), font=('Helvetica', 12), border_width=3)]
 ]
 
 # TESTAVIMAS NAUJO LANGO
