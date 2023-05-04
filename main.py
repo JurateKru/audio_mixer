@@ -68,7 +68,7 @@ while True:
         song_keys[choosen_channel] = choosen_name
     else:
         for i in range(8):
-            if event == song_keys[i]:
+            if event == all_channels[i]:
                 playing = song_status(event)
                 button(i, i, event, playing)
 
