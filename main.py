@@ -74,7 +74,7 @@ window = sg.Window("Audio mixer", layout)
 # DEFAULT BEGGINING VAR "playing" STATE FOR ALL BUTTONS
 playing = False
 
-# daaaaaaaar cia reikia pabaigti aprasyti, ir windows2 moduli, varau testo rasyti :D
+# daaaaaaaar cia reikia pabaigti aprasyti, ir windows2 moduli, varau testo rasyti :D 
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
