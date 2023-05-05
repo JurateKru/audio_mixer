@@ -14,8 +14,10 @@ def configure(channel):
         event, values = window.read()
         if event in (sg.WIN_CLOSED, 'exit'):
             break
+        # USER CHOOSEN BUTTON TO RENAME BY INDEX(CHANNEL ID IN THIS CASE)
         elif event == 'buttons':
             choosen_channel = values['buttons']
+        # USER CHOOSEN NEW BUTTON NAME
         elif event == 'button_name':
             choosen_name = values['button_name']
 
