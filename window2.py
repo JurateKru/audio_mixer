@@ -1,6 +1,17 @@
 import PySimpleGUI as sg
 
-def configure(channel):
+def configure(channel:int):
+    """
+    Description:
+        Configuration window for letting user assign audio mixer button names
+    
+    Args:
+        :param channel:            channel number passed in as index (integer)
+        
+    Reurns:
+        choosen_channel as channel index (button position)
+        choosen_name as user inputed new button name
+    """
     layout2 = [
     [sg.Text('Choose button to change: ')],
     [sg.Combo(channel, key='buttons', enable_events=True, s=(50,70))],
