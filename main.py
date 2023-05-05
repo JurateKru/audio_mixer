@@ -42,17 +42,11 @@ for index, song in enumerate(song_keys):
     all_channels.append(index)
 
 # SimpleGUI BUTTON LAYOUT (2x4) + BUTTON TO CALL CONFIGURATION WINDOW
-layout = [
+layout = [    
     [sg.Text('Select an audio to play:', font=('Helvetica', 12))],
-    [sg.Button(song_keys[0], key=all_channels[0], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
-    sg.Button(song_keys[1], key=all_channels[1], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
-    sg.Button(song_keys[2], key=all_channels[2], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
-    sg.Button(song_keys[3], key=all_channels[3], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2)],
-    [sg.Button(song_keys[4], key=all_channels[4], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
-    sg.Button(song_keys[5], key=all_channels[5], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
-    sg.Button(song_keys[6], key=all_channels[6], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2),
-    sg.Button(song_keys[7], key=all_channels[7], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14),border_width=2)],
-    [sg.Button("Go to configurator window", key='configure', button_color=('black', 'grey'), size=(55, 1), font=('Helvetica', 12), border_width=3)]
+    [sg.Button(song_keys[i], key=all_channels[i], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14), border_width=2) for i in range(0, 4)],
+    [sg.Button(song_keys[i], key=all_channels[i], button_color=('white', 'black'), size=(10, 3), font=('Helvetica', 14), border_width=2) for i in range(4, 8)],
+    [sg.Button("Configure", key='configure', button_color=('black', 'grey'), size=(55, 1), font=('Helvetica', 12), border_width=3)]
 ]
 
 # PySimpleGUI Window CLASS
