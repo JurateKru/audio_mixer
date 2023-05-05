@@ -6,10 +6,9 @@ from window2 import configure
 with open('audio_info.json', 'r') as f:
     song_list, song_keys = json.load(f)
 
-
 def play_sound(channel:int, sound:int):
     channel_n = mixer.Channel(channel)
-    sound = mixer.Sound(f'audio_samples/{song_keys[sound]}.mp3')
+    sound = mixer.Sound(f'audio_samples/{song_list[sound]}')
     channel_n.play(sound, loops=-1)
 
 def stop_sound(channel:int):
@@ -18,12 +17,16 @@ def stop_sound(channel:int):
 
 active_songs = []
 def button(channel, index, event, playing):
-    channel_name = song_keys[event]
     if not playing:
+        channel_name = song_keys[event]
         play_sound(channel, index)
         window[event].Update(channel_name, button_color=('white', 'green')) 
         active_songs.append(event)
+    elif event == "configure":
+        channel_name = song_keys[channel]
+        window[channel].Update(channel_name, button_color=('white', 'black'))
     else:
+        channel_name = song_keys[event]
         stop_sound(channel)
         window[event].Update(channel_name, button_color=('white', 'black')) 
         active_songs.remove(event)
@@ -64,9 +67,10 @@ while True:
         with open('audio_info.json', 'w') as f:
             json.dump([song_list, song_keys], f)
         break
-    elif event == "configure":  # TESTAVIMAS NAUJO LANGO
+    elif event == "configure":
         choosen_channel, choosen_name = configure(all_channels)
         song_keys[choosen_channel] = choosen_name
+        button(choosen_channel, choosen_channel, event, playing)
     else:
         for i in range(8):
             if event == all_channels[i]:
