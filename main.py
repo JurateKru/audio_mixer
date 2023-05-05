@@ -74,18 +74,22 @@ window = sg.Window("Audio mixer", layout)
 # DEFAULT BEGGINING VAR "playing" STATE FOR ALL BUTTONS
 playing = False
 
-# daaaaaaaar cia reikia pabaigti aprasyti, ir windows2 moduli, varau testo rasyti :D 
 while True:
+    # CREATES MAIN WINDOW WITH BUTTONS, NAMES, ETC.
     event, values = window.read()
+    # CHECKS FOR WINDOW CLOSED EVENT
     if event == sg.WIN_CLOSED:
+        # AFTER WINDOW_CLOSED EVENT, WRITES UPDATED BUTTON NAMES TO JSON
         with open('audio_info.json', 'w') as f:
             json.dump([song_list, song_keys], f)
         break
     elif event == "configure":
+        # OPENS CONFIG WINDOW, ASSIGNS USER CHOSEN BUTTON WITH USER WRITEN NEW BUTTON NAME
         choosen_channel, choosen_name = configure(all_channels)
         song_keys[choosen_channel] = choosen_name
         button(choosen_channel, choosen_channel, event, playing)
     else:
+        # CHECKS BY INDEX WHICH BUTTON USER CLICKED
         for i in range(8):
             if event == all_channels[i]:
                 playing = song_status(event)
