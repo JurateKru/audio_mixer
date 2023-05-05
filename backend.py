@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from pygame import mixer
 
 def configure(channel:int):
     """
@@ -31,7 +32,30 @@ def configure(channel:int):
         # USER CHOOSEN NEW BUTTON NAME
         elif event == 'button_name':
             choosen_name = values['button_name']
-
     window.close()
     return choosen_channel, choosen_name
-        
+
+# CREATES CHANNEL OBJ, TARGETS SOUNDFILE, PLAYS SOUND INDEFINATELLY
+def play_sound(channel:int, sound:int, song_list:list):
+    """
+    Description:
+        Creates pygame module, mixer class object to be able to use up to 8 channels to play sound files in parallel
+    Args:
+        :param channel:             channel number passed in as index (integer)
+        :sound:int:                 sound file number passed in as index (integer)
+        :song_list:list:            sound files names list from directory
+    """
+    channel_n = mixer.Channel(channel)
+    sound = mixer.Sound(f'audio_samples/{song_list[sound]}')
+    channel_n.play(sound, loops=-1)
+
+def stop_sound(channel:int):
+    """
+    Description:
+        Stops currently playing sound
+    Args:
+        :param channel:             channel number passed in as index (integer)
+    """
+    channel_n = mixer.Channel(channel)
+    channel_n.stop()
+
