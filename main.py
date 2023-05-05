@@ -1,32 +1,19 @@
 from pygame import mixer
 import PySimpleGUI as sg
 import json
-from window2 import configure
+from backend import configure, play_sound, stop_sound
 
 # READS .json CONFIG FILE AND RETURNS 2 LISTS [sound names with extension] [default button names by sound name]
 with open('audio_info.json', 'r') as f:
     song_list, song_keys = json.load(f)
 
-# CREATES CHANNEL OBJ, TARGETS SOUNDFILE, PLAYS SOUND INDEFINATELLY
-def play_sound(channel:int, sound:int):
-    channel_n = mixer.Channel(channel)
-    sound = mixer.Sound(f'audio_samples/{song_list[sound]}')
-    channel_n.play(sound, loops=-1)
-
-def stop_sound(channel:int):
-    channel_n = mixer.Channel(channel)
-    channel_n.stop()
-
 # TRACKS STATE OF VAR "playing" (True/False)
 active_songs = []
 
-# USES INDEX TO KNOW WHICH SOUND AND BUTTON TO ACTIVATE
-# USES "playing" STATE TO UPDATE BUTTON VISUALS
-# UPDATES BUTTON NAMES
 def button(channel, index, event, playing):
     if not playing:
         channel_name = song_keys[event]
-        play_sound(channel, index)
+        play_sound(channel, index, song_list)
         window[event].Update(channel_name, button_color=('white', 'green'))
         active_songs.append(event)
     elif event == "configure":
